@@ -2,9 +2,9 @@
 
 namespace Jhavenz\AutoMigrations;
 
+use Jhavenz\AutoMigrations\Commands\AutoMigrationsCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Jhavenz\AutoMigrations\Commands\AutoMigrationsCommand;
 
 class AutoMigrationsServiceProvider extends PackageServiceProvider
 {
@@ -19,7 +19,7 @@ class AutoMigrationsServiceProvider extends PackageServiceProvider
             ->name('laravel-auto-migrations')
             ->hasConfigFile()
             ->hasCommands([
-                AutoMigrationsCommand::class
+                AutoMigrationsCommand::class,
             ]);
     }
 }

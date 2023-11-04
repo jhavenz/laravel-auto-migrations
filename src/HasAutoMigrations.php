@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Migrations\Migration;
@@ -92,7 +91,7 @@ trait HasAutoMigrations
 
     protected function shouldCreateMigrationLog(Migrator $migrator, string $migrationName): bool
     {
-        return !in_array($migrationName, $migrator->getRepository()->getRan());
+        return ! in_array($migrationName, $migrator->getRepository()->getRan());
     }
 
     protected function shouldDeleteExistingMigrationLog(): bool

@@ -28,11 +28,11 @@ class ViewMigrateCommand extends Command
 
     public function handle(): int
     {
-        if (!$this->hasAValidMigrationCommand()) {
+        if (! $this->hasAValidMigrationCommand()) {
             return self::FAILURE;
         }
 
-        if (!$this->setMigrationFiles()) {
+        if (! $this->setMigrationFiles()) {
             return self::FAILURE;
         }
 
@@ -91,7 +91,7 @@ class ViewMigrateCommand extends Command
 
     private function prepareMigrationRepository(Migrator $migrator, SplFileInfo $fileInfo): void
     {
-        if (!$migrator->repositoryExists()) {
+        if (! $migrator->repositoryExists()) {
             $this->info('No migrations table was found, created it.');
 
             $migrator->getRepository()->createRepository();
@@ -117,7 +117,7 @@ class ViewMigrateCommand extends Command
     private function hasAValidMigrationCommand(): bool
     {
         return tap($this->isCreatingViews() || $this->isDroppingViews(), function (bool $valid) {
-            !$valid && $this->error(
+            ! $valid && $this->error(
                 sprintf("[%s] is not a valid migration command. Options are: 'up' (to create) or 'down' (to drop)", $this->option('command'))
             );
         });
@@ -141,7 +141,7 @@ class ViewMigrateCommand extends Command
 
                 $connection = $this->connectionFor($migration);
 
-                if (!in_array($connection, $disabledForeignKeyConnections)) {
+                if (! in_array($connection, $disabledForeignKeyConnections)) {
                     Schema::connection($connection)->disableForeignKeyConstraints();
                     $disabledForeignKeyConnections[] = $connection;
                 }

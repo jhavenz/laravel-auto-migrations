@@ -3,8 +3,8 @@
 namespace Jhavenz\AutoMigrations\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Jhavenz\AutoMigrations\AutoMigrationsServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
